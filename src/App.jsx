@@ -6,7 +6,6 @@ import NavBar from "./components/Universalcomponent/NavBar.jsx";
 import Footer from "./components/Universalcomponent/Footer.jsx";
 import AppWalletProvider from "./components/AppWalletProvider.jsx";
 
-
 const queryClient = new QueryClient();
 
 function App() {

@@ -1,8 +1,30 @@
 import ButtonComponent from "../ReusableComponent/ButtonComponent";
 import logo from '../../assets/logo.svg';
 import { Link } from "react-router";
+import { useLocation  } from "react-router";
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 
 function NavBar({handleStakeNow}) {
+
+  const { connected, connect, disconnect, publicKey, wallet } = useWallet();
+  const { setVisible } = useWalletModal();
+
+  const handleConnectWallet = async () => {
+    if (!wallet) {
+        setVisible(true);
+        return;
+    }
+    try {
+        if (connected) {
+            await disconnect();
+        } else {
+            await connect();
+        }
+    } catch (error) {
+        console.error("Wallet connection error:", error);
+    }
+};
 
   return (
     <div className="w-full py-5 px-20 flex justify-center">
@@ -23,9 +45,17 @@ function NavBar({handleStakeNow}) {
           </ul>
         </div>
         <div className="justify-self-end" >
-          <ButtonComponent fontweights='700' color='primary' onClick={handleStakeNow}>
-            Connect Wallet
-          </ButtonComponent>
+          {
+            location.pathname === '/stake' ? (
+            <ButtonComponent fontweights='700' color='primary' onClick={handleConnectWallet}>
+               {connected ? `Disconnect (${publicKey?.toString().slice(0, 4)}...)` : 'Connect Wallet'}
+            </ButtonComponent>
+            ) : (
+            <ButtonComponent fontweights='700' color='primary' onClick={handleStakeNow}>
+              Stake Now
+            </ButtonComponent>
+            )
+          }
         </div>
       </div>      
     </div>

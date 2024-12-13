@@ -13,12 +13,12 @@ function AppWalletProvider({children}) {
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-            <WalletProvider wallets={wallets} autoConnect>
-                <WalletModalProvider>
-                  {children}                      
-                </WalletModalProvider>
-            </WalletProvider>
-        </ConnectionProvider>       
+        <WalletProvider wallets={wallets} autoConnect>
+            <WalletModalProvider>
+                {children}                      
+            </WalletModalProvider>
+        </WalletProvider>
+    </ConnectionProvider>       
   )
 }
 
