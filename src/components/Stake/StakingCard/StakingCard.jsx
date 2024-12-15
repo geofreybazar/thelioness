@@ -14,8 +14,8 @@ function StakingCard() {
   return (
     <div className='border rounded-2xl'>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChangeTab} aria-label="lab API tabs example">
+        <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
+          <TabList onChange={handleChangeTab} aria-label="lab API tabs example" centered>
               <Tab label="Stake" value="1" />
               <Tab label="Unstake" value="2" />
               <Tab label="Claim Rewards" value="3" />

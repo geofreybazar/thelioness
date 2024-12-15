@@ -23,9 +23,13 @@ export default {
       'xl': '1280px',
       '2xl': '1536px',
       '3xl': '1920px',
-      
     },
-    extend: {      
+    extend: {  
+      fontFamily: {
+      // Add custom fonts
+        poppins: ['Poppins', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
+      },    
       colors: {
         'purple':"#4B0082",
         'off-white': '#f7f7f7',

@@ -22,9 +22,9 @@ function MonitoringCards() {
 
   return (
     <div>
-      <div className='grid grid-cols-3 gap-12'>
+      <div className='w-full flex justify-center gap-12'>
         {monitoringValues.map((field,index) => (
-        <div key={index} className='p-5 rounded-2xl text-white text-2xl font-semibold grid grid-cols-2 items-center bg-backgroundImg'>
+        <div key={index} className='p-5 rounded-2xl text-white text-2xl font-semibold grid grid-cols-2 items-center bg-backgroundImg w-96'>
             <div >{field.title}:</div>
             <div className='flex gap-5 justify-center'>
               <img className='w-16' src={logo} alt="elsa" />
@@ -32,8 +32,7 @@ function MonitoringCards() {
             </div>       
         </div>
       ))}
-      </div>
-      
+      </div>      
     </div>
   )
 }

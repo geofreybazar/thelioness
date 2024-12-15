@@ -27,7 +27,7 @@ function NavBar({handleStakeNow}) {
 };
 
   return (
-    <div className="w-full py-5 px-20 flex justify-center">
+    <div className="w-full py-5 px-20 flex justify-center font-poppins">
       <div className="w-1300 grid grid-cols-3 items-center">
         <Link to='/'>
           <div className="flex items-center gap-6">
