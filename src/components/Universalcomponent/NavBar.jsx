@@ -56,9 +56,9 @@ useEffect(() => {
         </Link>
         <div>
           <ul className="flex gap-14 font-semibold justify-center">
-            <li>Docs</li>
-            <li>About Us</li>
-            <li>Stats</li>
+            <li className='cursor-pointer hover:text-purple'>Docs</li>
+            <li className='cursor-pointer hover:text-purple'>About Us</li>
+            <li className='cursor-pointer hover:text-purple'>Stats</li>
           </ul>
         </div>
         <div className="justify-self-end" >
