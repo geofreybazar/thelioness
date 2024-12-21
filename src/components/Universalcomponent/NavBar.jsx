@@ -1,15 +1,19 @@
+import { useEffect } from 'react';
+import { Link } from "react-router";
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useConnection } from '@solana/wallet-adapter-react';
+import { useWalletModal } from '@solana/wallet-adapter-react-ui';
+import { LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../../store/userSlice';
 import ButtonComponent from "../ReusableComponent/ButtonComponent";
 import logo from '../../assets/logo.svg';
-import { Link } from "react-router";
-import { useLocation  } from "react-router";
-import { useWallet } from '@solana/wallet-adapter-react';
-import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 
 function NavBar({handleStakeNow}) {
-
+  const dispatch = useDispatch()
+  const { connection } = useConnection();
   const { connected, connect, disconnect, publicKey, wallet } = useWallet();
   const { setVisible } = useWalletModal();
-
   const handleConnectWallet = async () => {
     if (!wallet) {
         setVisible(true);
@@ -19,12 +23,25 @@ function NavBar({handleStakeNow}) {
         if (connected) {
             await disconnect();
         } else {
-            await connect();
-        }
+            await connect()
+        };
     } catch (error) {
         console.error("Wallet connection error:", error);
     }
 };
+
+const  getBalanceEvery10Seconds = async () => {const newBalance =  await connection.getBalance(publicKey); return newBalance}
+
+useEffect(() => {
+  if(connected){
+    getBalanceEvery10Seconds().then((res) => {
+      dispatch(userActions.setUser({publicKey: publicKey.toString(), balance: res / LAMPORTS_PER_SOL }))
+    })
+
+  }else{
+    dispatch(userActions.logout())
+  }
+}, [publicKey])
 
   return (
     <div className="w-full py-5 px-20 flex justify-center font-poppins">

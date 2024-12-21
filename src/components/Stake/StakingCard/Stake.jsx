@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { TextField } from '@mui/material';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import formatMoney from 'accounting-js/lib/formatMoney.js';
 import ButtonComponent from '../../ReusableComponent/ButtonComponent.jsx';
 import logo from '../../../assets/logo.svg'
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
 const AprPerDays = [
   {
@@ -23,11 +25,12 @@ const AprPerDays = [
 ];
 
 function Stake() {
+  const userInfo = useSelector((state) => state.user.user)
   const [isActive, setIsActive] = useState(1);
   const [selectedApr, setSelectedApr] = useState("5%");
   const activeStyle = "bg-backgroundImg text-main p-5 cursor-pointer rounded-xl text-xl flex flex-col items-center";
   const inactiveStyle = "bg-gray-200 text-black p-5 cursor-pointer rounded-xl text-xl flex flex-col items-center";
-
+  
   return (
     <div className='flex gap-8'>
       <div className='w-full font-semibold flex flex-col gap-5 p-5'>
@@ -63,13 +66,17 @@ function Stake() {
             <div className='w-12 '>
               <img src={logo} alt="elsa"/>
             </div>
-            <div>
-                0.00
+            <div className='text-2xl'>
+            { userInfo ? (
+              formatMoney(userInfo?.balance , { symbol: ""})
+            ) : (
+              <span>0.00</span>
+            )}
             </div>
           </div> 
         </div>
         <div className='flex flex-col'>
-          <p>Amount</p>
+          <p>Amount:</p>
           <TextField
             size="small"
             type='number'
@@ -80,17 +87,17 @@ function Stake() {
         </ButtonComponent>
       </div>
 
-      <div className='w-full border flex flex-col rounded-2xl'>
+      <div className='w-full shadow-md flex flex-col rounded-2xl'>
         <div className='h-2/4 bg-backgroundImg rounded-t-2xl p-5 text-main flex flex-col justify-center'>
             <p className='text-xl font-semibold'>Fixed APR</p>
             <p className='text-5xl font-semibold'><TrendingUpIcon sx={{ fontSize: 50 }}/>{selectedApr}</p>
             <p>estimated earning: 0.00 usd</p>        
         </div>
         <div className='h-2/4 p-5 flex flex-col gap-3'>
-        <p>Daily Real-Time Reward:</p>
-        <p>Subscription Time:</p>
-        <p>Interest Accrual Time:</p>
-        <p>Interest Payment:</p>
+          <p>Daily Real-Time Reward:</p>
+          <p>Subscription Time:</p>
+          <p>Interest Accrual Time:</p>
+          <p>Interest Payment:</p>
         </div>
       </div>
       

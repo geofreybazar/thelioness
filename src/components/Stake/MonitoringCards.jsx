@@ -4,10 +4,6 @@ function MonitoringCards() {
 
   const monitoringValues = [
     {
-      title: 'Total Staked',
-      value: '32.5M',
-    },
-    {
       title: 'Your Staked',
       value: '12',
     },
