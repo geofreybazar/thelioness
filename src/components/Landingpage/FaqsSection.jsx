@@ -27,10 +27,10 @@ const questionsAndAnswers = [
 function FaqsSection({handleStakeNow}) {
 
   return (
-    <div className='p-20 bg-backgroundImg bg-cover bg-center  flex justify-center'>
-        <div className="w-1300 grid grid-cols-2 gap-20">
+    <div className='p-5 md:p-12 lg:p-20 bg-backgroundImg bg-cover bg-center  flex justify-center'>
+        <div className="w-1300 grid md:grid-cols-2 gap-20">
             <div className="text-white flex flex-col gap-8">
-                <div className="text-6xl font-bold">FAQs</div>
+                <div className="text-4xl md:text-6xl font-bold">FAQs</div>
                 <div>Discover answers to your questions about staking and the unique features of our Dapp.</div>
                 <div className="w-full">
                     <ButtonComponent fontweights='700' color='primary' onClick={handleStakeNow}>

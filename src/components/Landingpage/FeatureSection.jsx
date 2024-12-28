@@ -25,15 +25,15 @@ const features = [
 function FeatureSection({handleStakeNow}) {
 
   return (
-    <div className='p-20 h-800 flex justify-center items-center'>
+    <div className='p-5 md:p-12 lg:p-20 flex justify-center items-center'>
       <div className="w-1300 flex flex-col gap-12 ">
         <div className='flex flex-col items-center'>
           <div>Unleash the Power of Staking.</div>
-          <div className='text-5xl font-bold'>Join the Pride, Grow Your Wealth</div>
+          <div className='text-4xl md:text-5xl font-bold text-center'>Join the Pride, Grow Your Wealth</div>
         </div>      
-        <div className='grid grid-cols-3 gap-32'>
+        <div className='flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-32 justify-items-center'>
           {features.map((feature, index) => (
-            <div key={index} className='p-8 w-350 border h-300 bg-purple text-white rounded-3xl flex flex-col justify-between'>
+            <div key={index} className='p-8 border bg-purple text-white rounded-3xl lg:w-280 xl:w-350 lg:h-300 flex flex-col gap-5 md:gap-0  md:justify-between'>
               <div>
                 <img src={feature.icon} alt="icon" className='w-1/6'/>
                 <div className='font-semibold text-2xl'>{feature.title}</div>
