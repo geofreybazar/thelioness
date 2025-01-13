@@ -1,0 +1,272 @@
+{
+  "address": "FHxitH28xfbZZqrnreHrZQm4jSvUBCDeTKMrFNsNDZLL",
+  "metadata": {
+    "name": "solana_program",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "claim_reward",
+      "discriminator": [
+        149,
+        95,
+        181,
+        242,
+        94,
+        90,
+        158,
+        162
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true
+        },
+        {
+          "name": "user_info",
+          "writable": true
+        },
+        {
+          "name": "user_staking_wallet",
+          "writable": true
+        },
+        {
+          "name": "admin_staking_wallet",
+          "writable": true
+        },
+        {
+          "name": "staking_token",
+          "writable": true
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "pool_info",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_token",
+          "writable": true
+        },
+        {
+          "name": "admin_staking_wallet",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "start_slot",
+          "type": "u64"
+        },
+        {
+          "name": "end_slot",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "stake",
+      "discriminator": [
+        206,
+        176,
+        202,
+        18,
+        200,
+        209,
+        179,
+        108
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "admin",
+          "writable": true
+        },
+        {
+          "name": "user_info",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_staking_wallet",
+          "writable": true
+        },
+        {
+          "name": "admin_staking_wallet",
+          "writable": true
+        },
+        {
+          "name": "staking_token",
+          "writable": true
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "unstake",
+      "discriminator": [
+        90,
+        95,
+        107,
+        42,
+        205,
+        124,
+        50,
+        225
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true
+        },
+        {
+          "name": "user_info",
+          "writable": true
+        },
+        {
+          "name": "user_staking_wallet",
+          "writable": true
+        },
+        {
+          "name": "admin_staking_wallet",
+          "writable": true
+        },
+        {
+          "name": "staking_token",
+          "writable": true
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "PoolInfo",
+      "discriminator": [
+        18,
+        19,
+        191,
+        60,
+        244,
+        139,
+        177,
+        235
+      ]
+    },
+    {
+      "name": "UserInfo",
+      "discriminator": [
+        83,
+        134,
+        200,
+        56,
+        144,
+        56,
+        10,
+        62
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "PoolInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "start_slot",
+            "type": "u64"
+          },
+          {
+            "name": "end_slot",
+            "type": "u64"
+          },
+          {
+            "name": "token",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "reward_debt",
+            "type": "u64"
+          },
+          {
+            "name": "deposit_slot",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}
