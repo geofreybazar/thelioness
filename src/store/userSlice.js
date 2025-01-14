@@ -4,7 +4,8 @@ const userSlice = createSlice({
     name:'user',
     initialState:{
         publicKey:null,
-        balance:null
+        solBalance:null,
+        elsaCoinBalance:null
     },
     reducers:{
         login(state,action){

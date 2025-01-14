@@ -30,6 +30,17 @@ const theme = createTheme({
       },
   });
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  borderRadius: '16px', 
+  bgcolor: 'background.paper',
+  p: 2,
+};
+
   export default {
-    theme
+    theme,
+    style
   }

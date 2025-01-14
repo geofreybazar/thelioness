@@ -26,11 +26,12 @@ const AprPerDays = [
 
 function Stake() {
   const userInfo = useSelector((state) => state.user.user)
+  const isConnecting = useSelector((state) => state.isLoadingElsaCoin.isLoadingElsaCoin)
   const [isActive, setIsActive] = useState(1);
   const [selectedApr, setSelectedApr] = useState("5%");
   const activeStyle = "bg-backgroundImg text-main p-5 cursor-pointer rounded-xl text-xl flex flex-col items-center";
   const inactiveStyle = "bg-gray-200 text-black p-5 cursor-pointer rounded-xl text-xl flex flex-col items-center";
-  
+
   return (
     <div className='flex gap-8'>
       <div className='w-full font-semibold flex flex-col gap-5 p-5'>
@@ -68,7 +69,7 @@ function Stake() {
             </div>
             <div className='text-2xl'>
             { userInfo ? (
-              formatMoney(userInfo?.balance , { symbol: ""})
+              formatMoney(userInfo?.elsaCoinBalance , { symbol: ""})
             ) : (
               <span>0.00</span>
             )}
